@@ -95,7 +95,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    CGPoint drawPoint = CGPointMake([self padding], 0);
+    CGPoint drawPoint = CGPointMake(self.lineWidth, self.lineWidth + 1);
     
     // Draw Stars
     for (int i = 0; i < self.numberOfStars; i++) {
