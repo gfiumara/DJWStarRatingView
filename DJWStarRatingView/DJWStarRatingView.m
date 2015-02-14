@@ -88,6 +88,7 @@
     
     rating = (int)rating;
     rating = rating + fractional - 0.5;
+    rating = MAX(1, MIN(rating, self.numberOfStars));
     return rating;
 }
 
@@ -204,12 +205,14 @@
 {
     _starSize = starSize;
     [self setNeedsDisplay];
+    [self invalidateIntrinsicContentSize];
 }
 
 - (void)setNumberOfStars:(NSInteger)numberOfStars
 {
     _numberOfStars = numberOfStars;
     [self setNeedsDisplay];
+    [self invalidateIntrinsicContentSize];
 }
 
 - (void)setRating:(float)rating
@@ -240,6 +243,7 @@
 {
     _padding = padding;
     [self setNeedsDisplay];
+    [self invalidateIntrinsicContentSize];
 }
 
 @end
