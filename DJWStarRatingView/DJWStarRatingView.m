@@ -34,7 +34,7 @@
         
         _allowsSwipeWhenEditable = YES;
         _allowsTapWhenEditable = YES;
-        _allowsHalfIntegralRatings = YES;
+        _allowsQuarterIntegralRatings = YES;
         
         self.backgroundColor = [UIColor clearColor];
         self.frame = CGRectMake(0, 0, self.intrinsicContentSize.width, self.intrinsicContentSize.height);
@@ -82,12 +82,12 @@
     
     CGFloat rating = (x / starWidthWithPadding) + 1;
     CGFloat fractional = fmodf(rating, 1);
-    fractional = roundf(fractional * 2.0) / 2.0;
-    
-    if (!self.allowsHalfIntegralRatings) fractional = 0.5;
-    
+    fractional = roundf(fractional * 4.0) / 4.0;
+
+    if (!self.allowsQuarterIntegralRatings) fractional = 0.75;
+
     rating = (int)rating;
-    rating = rating + fractional - 0.5;
+    rating = rating + fractional - 0.75;
     rating = fmax(0, fmin(rating, self.numberOfStars));
     return rating;
 }
@@ -164,8 +164,12 @@
     float star = (float)starNumber + 1;
     if (star <= self.rating) {
         return 1.0;
+    } else if ((float)(star - 0.25) <= self.rating) {
+	    return 0.75;
     } else if ((float)(star - 0.5) <= self.rating) {
         return 0.5;
+    } else if ((float)(star - 0.75) <= self.rating) {
+	    return 0.25;
     } else {
         return 0;
     }

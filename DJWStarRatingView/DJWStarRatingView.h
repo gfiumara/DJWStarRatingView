@@ -67,9 +67,9 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable BOOL allowsSwipeWhenEditable;
 
 /**
- *  Allows ratings at half-integer boundaries aswell as integers. Defaults to `YES`.
+ *  Allows ratings at quarter-integer boundaries as well as integers. Defaults to `YES`.
  */
-@property (nonatomic, assign) IBInspectable BOOL allowsHalfIntegralRatings;
+@property (nonatomic, assign) IBInspectable BOOL allowsQuarterIntegralRatings;
 
 
 /**
