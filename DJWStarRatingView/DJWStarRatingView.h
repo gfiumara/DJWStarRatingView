@@ -8,6 +8,26 @@
 
 @import UIKit;
 
+@class DJWStarRatingView;
+
+@protocol DJWStarRatingViewDelegate
+@optional
+
+/**
+ * @brief
+ * Called when the rating property of a DJWStarRatingView has been changed.
+ *
+ * @param starRatingView
+ * The DJWStarRatingView whose value changed.
+ * @param fromRating
+ * The rating before the rating changed.
+ * @param toRating
+ * The rating after being changed.
+ */
+- (void)starRatingView:(DJWStarRatingView *)starRatingView didChangeFromRating:(float)fromRating toRating:(float)toRating;
+
+@end
+
 IB_DESIGNABLE
 @interface DJWStarRatingView : UIView
 
@@ -71,6 +91,10 @@ IB_DESIGNABLE
  */
 @property (nonatomic, assign) IBInspectable BOOL allowsQuarterIntegralRatings;
 
+/**
+ * DJWStarRatingViewDelegate.
+ */
+@property (nonatomic, assign) NSObject<DJWStarRatingViewDelegate> *delegate;
 
 /**
  *  An instance of DJWStarRatingView. The designated initializer for this class.

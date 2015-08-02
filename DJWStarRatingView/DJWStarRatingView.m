@@ -221,8 +221,11 @@
 
 - (void)setRating:(float)rating
 {
+    float oldRating = _rating;
     _rating = rating;
     [self setNeedsDisplay];
+    if ([self.delegate respondsToSelector:@selector(starRatingView:didChangeFromRating:toRating:)])
+        [self.delegate starRatingView:self didChangeFromRating:oldRating toRating:rating];
 }
 
 - (void)setFillColor:(UIColor *)fillColor
